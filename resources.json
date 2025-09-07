@@ -1,0 +1,165 @@
+{
+"anxiety": [
+"It's okay to feel anxious sometimes; take deep breaths and ground yourself in the present.",
+"Try to break worries into smaller parts and tackle them one step at a time.",
+"Remember, anxiety is temporary, and you have the strength to get through it.",
+"When anxiety feels overwhelming, take a short walk or try some calming exercises."
+],
+"stress": [
+"Exams and life can be stressful; make sure to take short breaks to refresh your mind.",
+"Breaking your tasks into smaller pieces can help make stress feel more manageable.",
+"Prioritize sleep and nutrition—they are your best tools against stress.",
+"Don't hesitate to share how you feel with someone you trust; you're not alone."
+],
+"depression": [
+"Feeling low is tough, but remember this feeling won't last forever.",
+"Try to do something small you enjoy today—it can lift your mood bit by bit.",
+"It's okay to ask for help when things feel heavy; you are important.",
+"You're not alone in this; reach out to a friend, family member, or counselor if it helps."
+],
+"self_esteem": [
+"You are unique and valuable just as you are.",
+"Celebrate your small wins and be kind to yourself when things don't go perfectly.",
+"Remember, everyone has strengths—try to focus on what you love about yourself.",
+"Treat yourself with the same kindness you offer to your friends."
+],
+"body_image": [
+"Your body is amazing for all it can do, not just how it looks.",
+"Try to focus on feelings of health and strength rather than appearance.",
+"Be gentle with yourself; confidence grows with self-care and time.",
+"Limit comparing yourself to others; your journey is your own."
+],
+"bullying": [
+"No one deserves to be treated badly; your feelings are valid.",
+"Reach out to someone you trust for support; you don't have to face this alone.",
+"Remember, bullies' words reflect on them, not on your worth.",
+"Focus on your strengths and surround yourself with positive friends."
+],
+"relationships": [
+"Healthy relationships are based on trust and respect—it's okay to set boundaries.",
+"Communicate openly and honestly—it's the foundation for understanding and connection.",
+"Remember, it's okay to take time for yourself in any relationship.",
+"Seek support if a relationship feels overwhelming or unsafe."
+],
+"academic_pressure": [
+"Doing your best is all anyone can ask for; it's okay if things aren't perfect.",
+"Break your study into smaller parts with clear goals to avoid feeling overwhelmed.",
+"Remember to take breaks and recharge your energy during tough study days.",
+"Your worth is not defined by your grades, but by who you are."
+],
+"sleep_problems": [
+"Try to keep a regular sleep schedule, even on weekends.",
+"Avoid screens at least 30 minutes before bedtime to help your mind relax.",
+"A warm drink or a calming book can help ease you into sleep.",
+"If sleep troubles persist, consider talking to a healthcare professional."
+],
+"loneliness": [
+"Feeling lonely is natural sometimes; reaching out can help brighten your day.",
+"Try to connect with a group or activity that interests you.",
+"Remember, quality connections matter more than quantity.",
+"You matter, and there are people who want to support you."
+],
+"grief": [
+"Grief takes time; allow yourself to feel and heal at your own pace.",
+"Lean on friends, family, or support groups when it feels heavy.",
+"Honoring memories can be a comforting way to cope with loss.",
+"It's okay to seek professional help if grief feels overwhelming."
+],
+"anger": [
+"It's okay to feel angry; try to express it in healthy ways like writing or exercise.",
+"Take deep breaths or step away for a moment to calm your mind.",
+"Talking to someone you trust can help put your feelings into perspective.",
+"Remember, anger is a signal—listen to it and respond thoughtfully."
+],
+"panic_attacks": [
+"During a panic attack, focus on slow, deep breaths to soothe your body.",
+"Remind yourself that the feeling will pass and you are safe.",
+"Try grounding techniques like noticing things you can see, hear, and touch.",
+"If panic attacks happen often, consider seeking help from a health professional."
+],
+"Suicide": [
+"When you feel the urge to hurt yourself, try reaching out to someone you trust.",
+"You can call a helpline for immediate support; in India, iCALL is 9152987821.",
+"Remember, your feelings are valid, and help is available anytime you need it.",
+"Try to replace self-harm urges with safer activities like drawing or listening to music."
+],
+"trauma_PTSD": [
+"It's okay to feel affected by past trauma; healing is a gradual process.",
+"Try grounding exercises to stay connected to the present moment.",
+"Consider professional support which can help you work through trauma safely.",
+"Remember, you are not defined by your trauma; strength lies in seeking help."
+],
+"ADHD": [
+"Break tasks into small, manageable steps to help stay focused.",
+"Use timers or reminders to keep on track during study or work time.",
+"Celebrate your unique talents and strengths along with challenges.",
+"Don't hesitate to ask for help or accommodations if needed."
+],
+"OCD": [
+"It's okay to have repetitive thoughts; try to gently refocus your attention.",
+"Challenge your worries one step at a time to reduce their control.",
+"Seek support from professionals who understand OCD.",
+"Remember, you are not alone in managing these feelings."
+],
+"social_anxiety": [
+"Take small steps towards social situations at your own pace.",
+"Practice positive self-talk and remember people are often kinder than expected.",
+"Deep breathing can help calm nerves before or during interactions.",
+"Reaching out for support can help build your confidence over time."
+],
+"burnout": [
+"Feeling exhausted is a sign to pause and rest; your wellbeing comes first.",
+"Set clear boundaries to balance work, study, and relaxation time.",
+"Try mindfulness or gentle activities to reconnect with yourself.",
+"Prioritize sleep and nutrition to help recover your energy."
+],
+"digital_overuse": [
+"Take regular breaks from screens to help your mind and eyes rest.",
+"Engage in offline hobbies or spend time in nature to recharge.",
+"Set limits on social media to protect your mental wellbeing.",
+"Remember, real-life connections are important and nourishing."
+],
+"suicide": [
+  "When you feel the urge to hurt yourself, try reaching out to someone you trust immediately.",
+  "You can call a helpline for immediate support; in India, iCALL is 9152987821. If you are outside India, please reach out to your local emergency number or crisis hotline.",
+  "Remember, your feelings are valid, and help is available anytime you need it.",
+  "Try to replace self-harm urges with safer activities like drawing, listening to music, or writing down your feelings."
+],
+"pregnancy": [
+  "Pregnancy can bring mixed emotions—it's okay to feel excited and worried at the same time.",
+  "Take care of yourself with rest, good nutrition, and regular check-ups.",
+  "Lean on your support system—sharing your feelings with trusted people can make the journey easier.",
+  "If you ever feel overwhelmed during pregnancy, remember that seeking professional or emotional support is a sign of strength."
+],
+
+"harassment": [
+  "What you experienced is not your fault; no one deserves to be harassed.",
+  "If you feel safe, document the incident and reach out to someone you trust.",
+  "Speaking up to a teacher, supervisor, or authority figure can help stop the behavior.",
+  "Your safety and peace of mind are important—don't hesitate to seek professional or legal support."
+],
+
+"abuse": [
+  "Abuse is never okay—your feelings are valid and important.",
+  "If you are in immediate danger, try to reach out to local emergency services right away.",
+  "Confide in someone you trust, such as a close friend, family member, or counselor.",
+  "Healing from abuse takes time—professional support can help you rebuild your sense of safety and self-worth."
+],
+"sexual_assault" :[
+  "What happened to you is not your fault—you did not deserve this in any way.",
+  "Your safety matters most. If you are in immediate danger, please call your local emergency number right away.",
+  "You do not have to go through this alone; reaching out to someone you trust can give you comfort and support.",
+  "Professional support, such as counselors, doctors, or trained helpline staff, can help you take the next steps safely.",
+  "Try grounding yourself if overwhelming thoughts come—focus on your breathing, or notice five things you can see around you.",
+  "Healing takes time. Be gentle with yourself and allow space for your emotions.",
+  "Remember, you are not defined by this trauma; your strength lies in choosing to seek help and care.",
+  "If you feel ready, consider connecting with legal or advocacy services that protect your rights and safety."
+],
+
+"inspirational_stories": [
+  "A young woman faced workplace harassment, and with courage she reported it. Her company took action, and now she helps others know their rights.",
+  "A college student who was assaulted found the strength to reach out for help. With support from family and law enforcement, the perpetrator was brought to justice.",
+  "A man who was bullied and harassed spoke up after years of silence. His courage led to stronger anti-harassment policies in his community.",
+  "One survivor shared her story in court, and the abuser was held accountable. Today, she leads workshops to empower others to break the silence.",
+  "Justice can take time, but every voice raised makes a difference—many survivors have shown that healing and accountability are possible."
+]}
