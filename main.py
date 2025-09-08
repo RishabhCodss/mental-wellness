@@ -108,32 +108,71 @@ def retrieve_relevant_context(query, n_results=3):
                 "relevance_score": 1 - distance
             })
     
-    print(f"DEBUG: Found {len(context_pieces)} matches under threshold 0.7")
+    print(f"DEBUG: Found {len(context_pieces)} matches under threshold 1.5")
     return context_pieces
 
-def create_enhanced_prompt(user_message, context_pieces):
+def dynamic_context_selection(context_pieces, min_relevance=-0.4, max_gap=0.2):
     
-    system_prompt = """You are a compassionate youth mental wellness assistant. 
-    Use the provided context information to give helpful, accurate responses. 
-    If the context doesn't contain relevant information, provide general supportive guidance.
-    Keep responses concise and actionable."""
+    if not context_pieces:
+        return []
     
-    if context_pieces:
-        context_text = "\n".join([f"- {piece['content']}" for piece in context_pieces])
+    # Sort by relevance score (highest first)
+    sorted_pieces = sorted(context_pieces, key=lambda x: x['relevance_score'], reverse=True)
+    selected = []
+    
+    for i, piece in enumerate(sorted_pieces):
+        # Skip if below minimum relevance threshold
+        if piece['relevance_score'] < min_relevance:
+            break
+            
+        # Check for large gap between consecutive pieces (indicates drop in relevance)
+        if i > 0:
+            gap = sorted_pieces[i-1]['relevance_score'] - piece['relevance_score']
+            if gap > max_gap:
+                break
+                
+        selected.append(piece)
         
-        enhanced_prompt = f""" {system_prompt}
-                        RELEVANT CONTEXT:
-                        {context_text}
+        # Cap at 4 pieces to prevent overwhelming responses
+        if len(selected) >= 4:
+            break
+    
+    return selected
 
-                        USER QUESTION: {user_message}
+def create_enhanced_prompt(user_message, context_pieces):
+    """Enhanced prompt that asks LLM to synthesize multiple contexts"""
+    system_prompt = """You are a compassionate youth mental wellness assistant.
+    
+    The user has asked about mental health concerns. I've found several relevant topics from our knowledge base.
+    
+    Your task:
+    1. Synthesize the provided information into a coherent, personalized response
+    2. Address the connections between multiple mental health topics if relevant
+    3. Provide actionable, supportive guidance
+    4. Keep the response warm and encouraging
+    
+    Important: Don't just list separate advice for each topic - weave them together thoughtfully."""
 
-                        RESPONSE:"""
+    if context_pieces:
+        context_text = "\n\n".join([
+            f"**{piece['keyword'].upper()}** (relevance: {piece['relevance_score']:.2f}):\n{piece['content']}"
+            for piece in context_pieces
+        ])
+        
+        enhanced_prompt = f"""{system_prompt}
+
+RELEVANT KNOWLEDGE BASE CONTENT:
+{context_text}
+
+USER QUESTION: {user_message}
+
+SYNTHESIZED RESPONSE:"""
     else:
         enhanced_prompt = f"""{system_prompt}
 
-                            USER QUESTION: {user_message}
+USER QUESTION: {user_message}
 
-                            RESPONSE:"""
+RESPONSE:"""
     
     return enhanced_prompt
 
@@ -167,46 +206,43 @@ def chat():
     if not user_msg:
         return jsonify({"error": "message is required"}), 400
 
-    # Use embedding-based search for all queries
-    context_pieces = retrieve_relevant_context(user_msg, n_results=5)
-
-# If we have high-confidence matches, use them directly
-    if context_pieces and context_pieces[0]['relevance_score'] > 0.85:
-    # Sort by relevance and combine top matches
-        sorted_pieces = sorted(context_pieces, key=lambda x: x['relevance_score'], reverse=True)
-        combined_response = " ".join([piece['content'] for piece in sorted_pieces[:3]])
-        return jsonify({
-        'response': combined_response,
-        'method': 'embedding_direct',
-        'matches_used': len(sorted_pieces[:3])
-    })
-    
-    # RAG PIPELINE 
-
     try:
-        # Retrieve relevant context
-        context_pieces = retrieve_relevant_context(user_msg)
+        # Use embedding-based context retrieval for all queries
+        context_pieces = retrieve_relevant_context(user_msg, n_results=5)
         
-        # Create enhanced prompt
-        enhanced_prompt = create_enhanced_prompt(user_msg, context_pieces)
+        # Dynamic selection of relevant contexts
+        selected_contexts = dynamic_context_selection(context_pieces)
         
-        # Call LLM with enhanced prompt
-        response = model.generate_content(contents=[{"text": enhanced_prompt}])
-        ai_reply = response.text
-        
-        return jsonify({
-            "response": ai_reply,
-            "source": "rag_enhanced" if context_pieces else "llm_only",
-            "context_used": len(context_pieces),
-            "method": "rag"
-        })
+        if selected_contexts:
+            # Create enhanced prompt for LLM synthesis
+            enhanced_prompt = create_enhanced_prompt(user_msg, selected_contexts)
+            
+            # Generate response with context synthesis
+            response = model.generate_content([enhanced_prompt])
+            ai_reply = response.text
+            
+            return jsonify({
+                "response": ai_reply,
+                "method": "dynamic_synthesis",
+                "contexts_found": len(context_pieces),
+                "contexts_used": len(selected_contexts),
+                "keywords_used": [ctx['keyword'] for ctx in selected_contexts]
+            })
+        else:
+            # Fallback to general LLM response
+            response = model.generate_content([user_msg])
+            return jsonify({
+                "response": response.text,
+                "method": "llm_fallback",
+                "contexts_found": len(context_pieces)
+            })
+            
     except Exception as e:
-        # Fallback to simple LLM call
+        # Final fallback
         response = get_gemini_reply(user_msg)
         return jsonify({
             "response": response,
-            "source": "fallback",
-            "method": "simple_llm"
+            "method": "simple_fallback"
         })
     
 
