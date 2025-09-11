@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSpace - AI Mental Health Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>🧠</span> MindSpace
+                </div>
+                <div class="tagline">AI-Powered Mental Wellness</div>
+            </div>
+
+            <div class="mood-indicator">
+                <div class="mood-lights">
+                    <div class="mood-light" id="moodLight1"></div>
+                    <div class="mood-light" id="moodLight2"></div>
+                </div>
+                <div class="mood-text" id="moodText">Mood: Neutral</div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item active" data-page="chat">
+                    <span class="nav-icon">💬</span>
+                    <span>AI Chat</span>
+                </div>
+                <div class="nav-item" data-page="test">
+                    <span class="nav-icon">🧪</span>
+                    <span>Personality Test</span>
+                </div>
+                <div class="nav-item" data-page="docs">
+                    <span class="nav-icon">📚</span>
+                    <span>Documentation</span>
+                </div>
+                <div class="nav-item" data-page="about">
+                    <span class="nav-icon">ℹ️</span>
+                    <span>About Us</span>
+                </div>
+                <div class="nav-item" data-page="faq">
+                    <span class="nav-icon">❓</span>
+                    <span>WHO Q&A</span>
+                </div>
+            </nav>
+
+            <div class="login-section" id="loginSection">
+                <button class="login-btn" onclick="toggleLogin()">Login / Sign Up</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+           
+
+            <header class="header">
+                <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+                <h2 id="pageTitle">AI Mental Health Chat</h2>
+                <div></div>
+            </header>
+
+            <div class="content-area">
+                <!-- Chat Page -->
+                <div class="page active" id="chat">
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="welcome-message">
+                                <h2>Welcome to MindSpace </h2>
+                                <p>I'm here to provide a safe space for you to share your thoughts and feelings. How can I support you today?</p>
+                                
+                                <div class="suggestions">
+                                    <div class="suggestion-chip" onclick="sendSuggestion('I\'m feeling anxious today')">I'm feeling anxious</div>
+                                    <div class="suggestion-chip" onclick="sendSuggestion('I need coping strategies')">Coping strategies</div>
+                                    <div class="suggestion-chip" onclick="sendSuggestion('I feel overwhelmed')">Feeling overwhelmed</div>
+                                    <div class="suggestion-chip" onclick="sendSuggestion('I need someone to talk to')">Need to talk</div>
+                                </div>
+                            </div>
+                            
+                            <div class="typing-indicator" id="typingIndicator">
+                                <div class="message-avatar"><span>🤗</span></div>
+                                <div>
+                                    MindSpace is thinking...
+                                    <div class="typing-dots">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-container">
+                            <div class="chat-input-wrapper">
+                                <textarea id="chatInput" class="chat-input" placeholder="Share what's on your mind..." rows="1"></textarea>
+                                <button id="sendButton" class="send-button">➤</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personality Test Page -->
+                <div class="page" id="test">
+                    <div class="test-container">
+                        <div class="test-header">
+                            <h1>Personality Assessment</h1>
+                            <p>Discover insights about your personality and mental wellness patterns</p>
+                            <div class="test-progress">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                        </div>
+
+                        <div id="questionnaire">
+                            <!-- Questions will be generated here -->
+                        </div>
+
+                        <div class="results" id="testResults">
+                            <div class="personality-type">
+                                <h2 id="personalityType">Your Personality Type</h2>
+                                <p id="personalityDescription">Detailed description will appear here</p>
+                            </div>
+                            <div class="traits" id="traitsContainer">
+                                <!-- Trait scores will be displayed here -->
+                            </div>
+                            <button class="nav-btn primary" onclick="retakeTest()">Take Test Again</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentation Page -->
+                <div class="page" id="docs">
+                    <div class="page-header">
+                        <h1>Documentation</h1>
+                        <p>Learn how to make the most of MindSpace</p>
+                    </div>
+
+                    <div class="card">
+                        <h2>Getting Started</h2>
+                        <p>MindSpace is an AI-powered mental health platform designed to provide support, resources, and insights for your mental wellness journey.</p>
+                        
+                        <h3 style="margin-top: 2rem;">Features</h3>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                            <li><strong>AI Chat:</strong> Conversational support with empathetic responses</li>
+                            <li><strong>Personality Test:</strong> Discover your personality patterns and traits</li>
+                            <li><strong>Mood Tracking:</strong> Visual mood indicators based on your interactions</li>
+                            <li><strong>Crisis Support:</strong> Immediate access to emergency resources</li>
+                        </ul>
+
+                        <h3 style="margin-top: 2rem;">How to Use</h3>
+                        <p>Start by chatting with our AI or taking the personality assessment. Your mood indicators will update based on your interactions, helping you track your emotional patterns over time.</p>
+                    </div>
+                </div>
+
+                <!-- About Us Page -->
+                <div class="page" id="about">
+                    <div class="page-header">
+                        <h1>About MindSpace</h1>
+                        <p>Empowering mental wellness through AI technology</p>
+                    </div>
+
+                    <div class="card">
+                        <h2>Our Mission</h2>
+                        <p>We believe that everyone deserves access to mental health support. MindSpace combines cutting-edge AI technology with evidence-based therapeutic approaches to provide accessible, personalized mental wellness tools.</p>
+                        
+                        <h3 style="margin-top: 2rem;">Our Approach</h3>
+                        <p>Our platform uses advanced natural language processing to understand and respond to emotional cues, providing supportive conversations while maintaining user privacy and safety.</p>
+                        
+                        <h3 style="margin-top: 2rem;">Privacy & Security</h3>
+                        <p>Your mental health data is sensitive. We employ industry-standard encryption and never share personal information with third parties.</p>
+                        
+                        <h3 style="margin-top: 2rem;">Disclaimer</h3>
+                        <p><em>MindSpace is designed to complement, not replace, professional mental health care. In case of emergency, please contact your local crisis services immediately.</em></p>
+                    </div>
+                </div>
+
+                <!-- FAQ Page -->
+                <div class="page" id="faq">
+                    <div class="page-header">
+                        <h1>WHO Guidelines & FAQ</h1>
+                        <p>Frequently asked questions about mental health and our platform</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                What is mental health according to WHO? <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                According to the World Health Organization, mental health is "a state of well-being in which every individual realizes his or her own potential, can cope with the normal stresses of life, can work productively and fruitfully, and is able to make a contribution to her or his community."
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                How does AI support mental health? <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                AI can provide 24/7 accessibility, personalized responses, and consistent support while maintaining privacy. However, it should complement, not replace, professional mental healthcare.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                When should I seek professional help? <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Seek professional help if you experience persistent sadness, anxiety, thoughts of self-harm, substance abuse, or if mental health issues interfere with daily functioning for more than two weeks.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Is my data secure on MindSpace? <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, we use end-to-end encryption and follow HIPAA guidelines. Your conversations and personal data are stored securely and never shared without your explicit consent.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                What makes a good mental health support system? <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                A good support system includes: accessibility, non-judgmental environment, professional resources, peer support, crisis intervention, and personalized care approaches.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
